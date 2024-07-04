@@ -7,6 +7,7 @@ const HomePage = () =>{
     return (
         <div className="App">
           <header className="App-header">
+            <h1>Welcome to CosmoChat!</h1><br/>
             <Button onClick={() =>{navigate('/cosmochat')}}>New CosmoChat Window</Button>
           </header>
         </div>

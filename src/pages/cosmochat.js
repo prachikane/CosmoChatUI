@@ -83,15 +83,16 @@ const CosmoChat = () =>{
     return (
         <div className="App">
           <header className="App-header">
+            <h1>CosmoChat</h1>
             <div style={{height:"700px", width:"600px"}}>
-                <MainContainer>
+                <MainContainer style={{borderRadius: '30px'}}>
                     <ChatContainer>
                         <MessageList 
                         scrollBehavior='smooth'
                         typingIndicator={typing? <TypingIndicator content="CosmoChat is typing"/> : null}
                         >
                             {messages.map((message, i) => {
-                                return <Message key={i} model={message}/>
+                                return <Message key={i} model={message} style={{borderRadius: '10px'}}/>
                             })}
                         </MessageList>
                         <MessageInput placeholder='Type here' onSend={handlesend}></MessageInput>
