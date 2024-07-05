@@ -84,7 +84,7 @@ const CosmoChat = () =>{
         <div className="App">
           <header className="App-header">
             <h1>CosmoChat</h1>
-            <div style={{height:"700px", width:"600px"}}>
+            <div style={{height:"700px", width:"500px"}}>
                 <MainContainer style={{borderRadius: '30px'}}>
                     <ChatContainer>
                         <MessageList 
