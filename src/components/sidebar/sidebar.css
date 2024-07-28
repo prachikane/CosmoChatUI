@@ -1,0 +1,24 @@
+.nav-bar{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(100, 100, 100);
+}
+
+.upper {
+    flex:6;
+    height: 60%;
+    border-bottom: 1px solid rgb(100, 100, 100);
+    padding: 2.5rem;
+  }
+  
+  .lower {
+    flex: 3;
+    height: 40%;
+    padding: 2.5rem;
+  }
