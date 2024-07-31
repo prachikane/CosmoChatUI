@@ -2,12 +2,12 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const {logger} = functions;
 
-exports.addMessage = functions.https.onCall(async (data, context) => {
+exports.getMessage = functions.https.onCall(async (data, context) => {
   try {
     logger.log("Received message: ", data);
 
     // Check for valid arguments
-    if (!data.text || !data.userId) {
+    if (!data.message || !data.sender || !data.direction) {
       logger.log("Invalid arguments");
       throw new functions.https.HttpsError(
           "invalid-argument",
@@ -15,12 +15,13 @@ exports.addMessage = functions.https.onCall(async (data, context) => {
       );
     }
 
-    const {text, userId} = data;
+    const {message, sender, direction} = data;
 
     // construct the message
     const messageData = {
-      text,
-      userId,
+      message,
+      direction,
+      sender,
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
     };
 
@@ -28,7 +29,7 @@ exports.addMessage = functions.https.onCall(async (data, context) => {
     const messageRef = await admin
         .firestore()
         .collection("chats")
-        .doc(userId)
+        .doc("user1")
         .collection("messages")
         .add(messageData);
 

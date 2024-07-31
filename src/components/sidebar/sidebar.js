@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 
 const Sidebar = () => {
 
-    const chatHistory = []
   return (
     <div className="nav-bar">
       <div className="upper">

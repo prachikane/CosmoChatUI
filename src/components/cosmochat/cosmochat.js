@@ -8,19 +8,33 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { addMessage } from "../../firebase_config";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const CosmoChat = () => {
   const [typing, setTyping] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      message: "Hello, I am CosmoChat! \nHow can I help you today?",
-      sender: "ChatGPT",
-      direction: "incoming",
-    },
-  ]);
+  const firstMsg={
+    message: "Hello, I am CosmoChat! \nHow can I help you today?",
+    sender: "ChatGPT",
+    direction: "incoming",
+  };
+  const [messages, setMessages] = useState([firstMsg]);
+
+  const handleSendMessage = async (newMessage) => {
+    try {
+      const result = await addMessage(newMessage);
+      console.log("Message sent successfully:", result.data);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
+
+
+  useEffect(()=>{
+    console.log(messages);
+  },[messages]);
 
   const handlesend = async (message) => {
     const newMessage = {
@@ -32,11 +46,11 @@ const CosmoChat = () => {
     //update message list
     const newMessages = [...messages, newMessage];
     setMessages(newMessages);
+    await handleSendMessage(newMessage);
 
     setTyping(true);
     //process message by sending it to chatgpt
     await sendMessagesToChatGPT(newMessages);
-    console.log(newMessages);
   };
 
   async function sendMessagesToChatGPT(chatmessages) {
@@ -73,15 +87,17 @@ const CosmoChat = () => {
         return data.json();
       })
       .then((data) => {
+        const botreply={
+          message: data.choices[0].message.content,
+          sender: "ChatGPT",
+          direction: "incoming",
+        }
         setMessages([
           ...chatmessages,
-          {
-            message: data.choices[0].message.content,
-            sender: "ChatGPT",
-            direction: "incoming",
-          },
+          botreply,
         ]);
         setTyping(false);
+        handleSendMessage(botreply);
       });
   }
 
