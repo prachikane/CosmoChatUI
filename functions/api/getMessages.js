@@ -2,46 +2,16 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const {logger} = functions;
 
-exports.getMessage = functions.https.onCall(async (data, context) => {
+exports.getMessages = functions.https.onCall(async (data, context) => {
   try {
-    logger.log("Received message: ", data);
-
-    // Check for valid arguments
-    if (!data.message || !data.sender || !data.direction) {
-      logger.log("Invalid arguments");
-      throw new functions.https.HttpsError(
-          "invalid-argument",
-          "required fields text and userid not found",
-      );
-    }
-
-    const {message, sender, direction} = data;
-
-    // construct the message
-    const messageData = {
-      message,
-      direction,
-      sender,
-      timestamp: admin.firestore.FieldValue.serverTimestamp(),
-    };
-
-    // Add message to the user collection
-    const messageRef = await admin
-        .firestore()
-        .collection("chats")
-        .doc("user1")
-        .collection("messages")
-        .add(messageData);
-
-    logger.log("Message added successfully, messageId : ", messageRef.id);
-
-    return {status: "Success", messageId: messageRef.id};
+    // const db = 
+    
   } catch (error) {
-    logger.error("Error adding message: ", error);
+    logger.error("Error retrieving messages: ", error);
 
     throw new functions.https.HttpsError(
         "unknown",
-        "An error occured while adding this message",
+        "An error occured while retrieving these messages",
         error.message,
     );
   }

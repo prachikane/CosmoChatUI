@@ -23,5 +23,7 @@ const admin = require("firebase-admin");
 admin.initializeApp();
 
 const {addMessage} = require("./api/addMessage");
+// const {getMessages} = require("./api/getMessages");
 
 exports.addMessage = addMessage;
+// exports.getMessages = getMessages;
