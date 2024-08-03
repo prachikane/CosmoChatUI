@@ -36,18 +36,18 @@ const ActivityPage = () => {
     <div className="container">
       <div className="text-zone">
         <h1> Chat History Statistics</h1>
-        <Box sx={{ height: 400, width: '100%', backgroundColor: "white" }}>
+        <Box sx={{ height: '80%', width: '100%', backgroundColor: "white" }}>
           <DataGrid
             rows={messages}
             columns={columns}
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 5,
+                  pageSize: 15,
                 },
               },
             }}
-            pageSizeOptions={[5]}
+            pageSizeOptions={[15]}
             checkboxSelection
             disableRowSelectionOnClick
           />
