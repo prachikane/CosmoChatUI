@@ -8,16 +8,16 @@ const Sidebar = () => {
   return (
     <div className="nav-bar">
       <div className="upper">
-      <h3>CosmoChat</h3>
+      <h3><a href="/homepage">Cosmo Chat</a></h3>
         <nav>
-            <Button href="/cosmochat" variant="contained"> + New Chat </Button>
+            <Button href="/cosmochat" variant="contained"> New Chat </Button>
         </nav>
         
       </div>
       <div className="lower">
       <h3>Activity Page</h3>
         <nav>
-            <Button href="/cosmochat/activity" variant="contained">Go to activity page</Button>
+            <Button href="/activity" variant="contained">Go to activity page</Button>
         </nav>
       </div>
     </div>

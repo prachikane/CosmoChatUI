@@ -27,16 +27,17 @@ const ActivityPage = () => {
     })
 
     const columns = [
-      { field: 'direction', headerName: 'Direction', width: 100, editable: false },
-      { field: 'sender', headerName: 'Sender', width: 100, editable: false },
-      { field: 'message', headerName: 'Text', width: 1000, editable: false },
+      { field: 'direction', headerName: 'Direction', width: 100, editable: false, headerAlign: 'center', headerClassName: 'super-app-theme--header'},
+      { field: 'sender', headerName: 'Sender', width: 100, editable: false, headerAlign: 'center', headerClassName: 'super-app-theme--header' },
+      { field: 'message', headerName: 'Text', width: 1000, editable: false, headerAlign: 'center', headerClassName: 'super-app-theme--header' },
     ];
 
   return (
     <div className="container">
       <div className="text-zone">
         <h1> Chat History Statistics</h1>
-        <Box sx={{ height: '80%', width: '100%', backgroundColor: "white" }}>
+        <Box sx={{ height: '80%', width: '90%', backgroundColor: "white",'& .super-app-theme--header': {
+          backgroundColor: '#1976d2', textAlign:"center",}}}>
           <DataGrid
             rows={messages}
             columns={columns}
@@ -48,7 +49,6 @@ const ActivityPage = () => {
               },
             }}
             pageSizeOptions={[15]}
-            checkboxSelection
             disableRowSelectionOnClick
           />
         </Box>

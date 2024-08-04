@@ -2,7 +2,7 @@
   "name": "cosmochatui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://127.0.0.1:3000/cosmochat",
+  "homepage": "http://127.0.0.1:3000/homepage",
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@emotion/react": "^11.11.4",
