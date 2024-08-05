@@ -10,13 +10,13 @@ Please take a look at our slide presentation for a detailed project architecture
 - Integration with generative AI
 - Firebase Data Storage
 
-## Technologies Used
+## Technologies
 - React.js
 - Material-UI for styling
 - Material-UI DataGrid for data visualization
 - Firbase Database
 
-## Prerequisites
+## Setting up the IDE
 Before you begin, ensure you have the following installed:
 - Node.js (v14.0.0 or later)
 - npm (v6.0.0 or later)
@@ -82,7 +82,6 @@ This project requires an OpenAI API key to function. Follow these steps to obtai
 
    
 ## Running the Application
-### Run the project
 1. Navigate to the project directory backend:
    ```
      cd cosmochatui
@@ -93,7 +92,7 @@ This project requires an OpenAI API key to function. Follow these steps to obtai
    ```
 2. Open your browser and visit `http://localhost:3000/homepage`
 
-## Usage
+## How to use the application
 - Click on "Start New Chat" to begin a chat session.
 - Use the input field at the bottom to send messages.
 - See the system responses
